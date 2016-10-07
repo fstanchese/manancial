@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-10-01T01:56:50 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Blue" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62a63eca-c8d9-460a-a7c9-a558fc90fe54">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="reservatorio.xml"/>
+	<queryString>
+		<![CDATA[SELECT reservatorio.represa.id,
+	reservatorio.represa.nome as represanome,
+	reservatorio.represa.volumereserva,
+	reservatorio.sistema.nome as sistemanome,
+	reservatorio.represa.volumeutil
+FROM reservatorio.represa,reservatorio.sistema 
+WHERE reservatorio.represa.sistema_id=reservatorio.sistema.id
+ORDER BY reservatorio.sistema.nome,reservatorio.represa.nome]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="represanome" class="java.lang.String"/>
+	<field name="volumereserva" class="java.lang.Double"/>
+	<field name="sistemanome" class="java.lang.String"/>
+	<field name="volumeutil" class="java.lang.Double"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="63" backcolor="#006699" uuid="7b317986-e4bf-473d-8cc1-6acc72e8040f"/>
+				<staticText>
+					<reportElement x="180" y="10" width="234" height="43" forecolor="#FFFFFF" uuid="ae5ec7a0-2d52-4004-8cff-cf4c0cc6a01c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Lista de Represas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="d778433c-06c0-496b-a63e-182e033728df"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement mode="Opaque" x="140" y="52" width="171" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="98988600-c780-4ff3-a54d-b580fe081512"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Represa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="311" y="52" width="139" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="be0432d9-4871-41b3-b914-eb9e827429ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vol Util (x106m3)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="52" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e1902ba3-5aa4-47a6-b811-e215b9645cab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vol Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="52" width="140" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3f8f6fcf-1e3d-4c6c-8eaf-9678f9bcbdfc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<detail>
+		<band height="24">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="-1" width="140" height="20" uuid="ac3e467e-421d-468b-806c-e86f8bbb59c8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sistemanome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="140" y="-1" width="171" height="20" uuid="2f63bfad-4578-4d4c-ac4c-03f0f36fbbed"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{represanome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="311" y="-2" width="130" height="20" uuid="f7272514-72bb-4fa8-aa40-a9b1a15d2d3d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{volumeutil}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="444" y="-1" width="111" height="20" uuid="62d6670c-1542-4e83-81c9-fc24ce0bb467"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{volumereserva}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="8336fd3c-8c1d-4887-9a69-ea3733742b63"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="9467a9d2-947f-4ba7-8982-2c89c8cd14ba"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="a9de9456-6e7f-4ef1-b81c-e86e68dc97cf"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM d, yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="fa879c08-117f-4bb7-a0cf-9a1754bca297"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-09-30T05:30:54 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sistemas" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eb82f601-92e6-4a88-aff2-55fe8f7dfef5">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="cmVzZXJ2YXRvcmlvLnNpc3RlbWEgLDE1MiwxNSw1ZTVhMjc3MS05ZmM1LTRmZWQtODI5Ni1hNDY2&#xA;YzBhYzNkMmM7cmVzZXJ2YXRvcmlvLnNpc3RlbWFfbXVuaWNpcGlvICwxNSw3Miw3ZTcyYzk2NS01&#xA;NzQxLTRiNGMtYTI0Ny1mZDQzZTc5MTI1Njk7cmVzZXJ2YXRvcmlvLm11bmljaXBpbyAsMTUyLDEz&#xA;MCwwMGM0ZGMwYi0wZmNmLTQwNjgtYWIyYS04ZGZiM2U2MTU0Yjc7"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[SELECT reservatorio.sistema.id,
+	reservatorio.sistema.nome,
+	reservatorio.municipio.nome AS municipios
+FROM reservatorio.sistema_municipio
+	INNER JOIN reservatorio.sistema ON 
+	 reservatorio.sistema_municipio.sistema_id = reservatorio.sistema.id 
+	INNER JOIN reservatorio.municipio ON 
+	 reservatorio.sistema_municipio.municipio_id = reservatorio.municipio.id 
+ORDER BY reservatorio.sistema.nome DESC,
+	reservatorio.municipio.nome DESC]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="municipios" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="4c8a6567-dec2-48b8-8122-6a8a87ecd7a1"/>
+				</line>
+				<staticText>
+					<reportElement mode="Opaque" x="-20" y="0" width="80" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="5c2d0fdc-1da9-4cd3-8b73-b20a8c027b49"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sistema]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="60" y="1" width="515" height="31" forecolor="#006699" backcolor="#E6E6E6" uuid="4ff5249b-317b-44fe-922d-e03261e15171"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="52">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="70" backcolor="#006699" uuid="e41cfe02-cd8e-4ed2-87a7-a1c39bb9f508"/>
+				<staticText>
+					<reportElement x="62" y="14" width="470" height="43" forecolor="#FFFFFF" uuid="f6286379-2028-4f08-96f0-2dacd099b95b"/>
+					<textElement textAlignment="Center">
+						<font size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sistemas de Abastecimento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="7b04224c-5d53-47a9-845b-b200f7e90554"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Grande São Paulo]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<detail>
+		<band height="21">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="20" width="595" height="1" uuid="98f9c3d9-36fd-4fa0-abc8-474cdd6d080d"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="277" height="20" uuid="02c2300f-4735-444d-923b-7611b5011ce7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{municipios}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="1c5bb7b6-cee2-44ad-b8d2-44c92f2c30bb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="70c24987-9e9d-4032-955d-a0093989e135"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="0" y="4" width="100" height="13" uuid="a50acf7a-a418-45e0-8bd8-a3745270d188"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
